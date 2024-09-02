@@ -11,13 +11,7 @@ const PORT=process.env.PORT;
 const app=express();
 
 //middleware
-const corsOptions = {
-  origin: 'http://localhost:3000/', // Replace with your frontend domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-app.use(cors(corsOptions)); // Restrict CORS in production
+app.use(cors());
 app.use(express.json());
 
 app.get("/",(req,res)=>{
