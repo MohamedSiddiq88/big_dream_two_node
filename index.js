@@ -12,7 +12,7 @@ const app=express();
 
 //middleware
 const corsOptions = {
-  origin: 'http://your-frontend-domain.com', // Replace with your frontend domain
+  origin: 'http://localhost:3000/', // Replace with your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
