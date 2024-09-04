@@ -42,3 +42,25 @@ export function deleteGameResult(resultId) {
         .collection("gameResult")
         .deleteOne({ _id: resultId });
 }
+
+
+export function getPaginatedGameResults(page = 1, limit = 10) {
+    const skip = (page - 1) * limit;
+    return client
+        .db("dream-big")
+        .collection("gameResult")
+        .find({})
+        .skip(skip)  // Skip the previous pages' results
+        .limit(limit) // Limit the number of results
+        .toArray();
+}
+
+export function getLastFiveResults(gameName) {
+    return client
+        .db("dream-big")
+        .collection("gameResult")
+        .find({gameName})
+        .sort({ _id: -1 })  // Sort by _id in descending order to get the latest entries first
+        .limit(5)  // Limit the result to 5 entries
+        .toArray();
+}

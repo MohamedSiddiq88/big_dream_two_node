@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 // configure the environment.
 dotenv.config();
 
-const MongoURL = "mongodb://localhost:27017"; // Update the URL for the local MongoDB
+const MongoURL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2"; // Update the URL for the local MongoDB
 
 async function createConnection() {
     const client = new MongoClient(MongoURL);
