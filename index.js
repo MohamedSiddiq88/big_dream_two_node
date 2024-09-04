@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv"
 import { usersRouter } from "./Routers/users.js";
-import { gameResultsRouter } from "./Routes/gameResults.js";
 import cors from "cors";
+import { gameResultsRouter } from "./Routers/gameResults.js";
 
 //configure the envirenment.
 dotenv.config()
