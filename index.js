@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv"
 import { usersRouter } from "./Routers/users.js";
+import { gameResultsRouter } from "./Routes/gameResults.js";
 import cors from "cors";
 
 //configure the envirenment.
@@ -18,7 +19,7 @@ app.get("/",(req,res)=>{
     res.send("Welocome to project1")
 })
 app.use("/users",usersRouter)   
-
+app.use("/game-results", gameResultsRouter);
 
 
 //listen to a server
