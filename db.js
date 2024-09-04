@@ -1,19 +1,17 @@
-import {MongoClient} from "mongodb";
-import Obj from "mongodb"
-import dotenv from "dotenv"
+import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
-// configure the envirenment.
-dotenv.config()
+// configure the environment.
+dotenv.config();
 
-const secretkey=process.env.SECRETKEY;
-const MongoURL = `mongodb+srv://siddiq:${secretkey}@project1.dee1vi6.mongodb.net/?retryWrites=true&w=majority`;
+const MongoURL = "mongodb://localhost:27017"; // Update the URL for the local MongoDB
 
-async function createConnection(){
-    const client=new MongoClient(MongoURL);
+async function createConnection() {
+    const client = new MongoClient(MongoURL);
     await client.connect();
-    console.log("connected successfully");
+    console.log("Connected successfully to local MongoDB");
     return client;
 }
 
-export var ObjectId=Obj.ObjectId;
-export const client=await createConnection();
+export const client = await createConnection();
+export var ObjectId = MongoClient.ObjectId; // You can also use `MongoClient.ObjectId`

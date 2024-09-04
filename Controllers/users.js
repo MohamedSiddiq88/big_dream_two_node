@@ -8,36 +8,36 @@ export function  addUsers(userInfo){
     .insertOne(userInfo)
 }
 
-export function  getUser(userEmail){
+export function  getUser(userphoneNumber){
     return client
     .db("project1")
     .collection("users")
-    .findOne({email:userEmail})
+    .findOne({phoneNumber:userphoneNumber})
 }
 
 export function  generateJwtToken(id){
     return jwt.sign({id}, process.env.SECRETKEY, {expiresIn:"30d"})   
 }
 
-export function addRandomString(randomString,email){
+export function addRandomString(randomString,phoneNumber){
     
     const existMail = client
     .db("project1")
     .collection("randomstring")
-    .findOne({email:email})
+    .findOne({phoneNumber:phoneNumber})
 
     if(existMail){
         return client
         .db("project1")
         .collection("randomstring")
-        .findOneAndUpdate({email:email},{$set:{randomString:randomString}})   
+        .findOneAndUpdate({phoneNumber:phoneNumber},{$set:{randomString:randomString}})   
     }else{
         return client
         .db("project1")
         .collection("randomstring")
         .insertOne({
             randomString: randomString,
-            email:email
+            phoneNumber:phoneNumber
           })
     }
 
@@ -58,9 +58,9 @@ export function deleteRandomString(randomString){
         .deleteOne({ randomString: randomString });
 }
 
-export function updatePassword(email,password){
+export function updatePassword(phoneNumber,password){
     return client
         .db("project1")
         .collection("users")
-        .updateOne({ email: email }, { $set: { password: password } });
+        .updateOne({ phoneNumber: phoneNumber }, { $set: { password: password } });
 }
